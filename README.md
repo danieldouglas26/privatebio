@@ -61,7 +61,6 @@ O projeto consiste em arquivos HTML, CSS e JS, seguindo o padrão do mercado, pe
 ## Estrutura de Arquivos
 
 ```html
-.
 ├── assets/
 │   └── seu-logo.png      (Opcional: sua imagem de logotipo)
 ├── css/
