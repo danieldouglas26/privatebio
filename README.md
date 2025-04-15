@@ -1,4 +1,4 @@
-# Linktree Indexador de Links
+# Indexador de LINKS
 
 Este é um projeto simples para criar uma página de índice de links. Ele permite que você centralize todos os seus links importantes em um único lugar, facilitando o compartilhamento em diversas plataformas.
 
@@ -11,8 +11,8 @@ O projeto consiste em arquivos HTML, CSS e JS, seguindo o padrão do mercado, pe
 1.  **Clone o repositório:**
 
     ```bash
-    git clone <URL_DO_SEU_REPOSITÓRIO>
-    cd nome-do-seu-repositorio
+    git clone https://github.com/danieldouglas26/privatebio.git
+    cd privatevio-main
     ```
 
 2.  **Edite o arquivo `index.html`:**
@@ -88,7 +88,7 @@ Sinta-se à vontade para contribuir com este projeto através de pull requests. 
 
 ## Licença
 
-[INSERIR LICENÇA AQUI - Ex: MIT License]
+GNU GENERAL PUBLIC LICENSE
 
 ## Demonstração
 
