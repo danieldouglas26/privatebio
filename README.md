@@ -60,6 +60,7 @@ O projeto consiste em arquivos HTML, CSS e JS, seguindo o padrão do mercado, pe
 
 ## Estrutura de Arquivos
 
+```html
 .
 ├── assets/
 │   └── seu-logo.png      (Opcional: sua imagem de logotipo)
@@ -73,7 +74,7 @@ O projeto consiste em arquivos HTML, CSS e JS, seguindo o padrão do mercado, pe
 │   └── script.js         (Script JavaScript para funcionalidades adicionais)
 └── index.html            (Arquivo HTML principal)
 README.md
-
+ ```
 
 ## Personalização Avançada (Opcional)
 
