@@ -1,0 +1,292 @@
+/* --- Variáveis CSS --- */
+:root {
+    --bg-color: #000000;
+    --text-color: #e0e0e0;
+    --text-color-light: #ffffff;
+    --container-bg: rgba(25, 25, 25, 0.7);
+    --container-bg-gradient-start: rgba(35, 35, 35, 0.208); /* NEW */
+    --container-bg-gradient-end: rgba(15, 15, 15, 0.114); /* NEW */
+    --container-border-color: rgba(211, 210, 210, 0.15);
+    --button-bg-default: rgba(45, 45, 45, 0.85);
+    --button-text-default: #f0f0f0;
+    --button-border-default: rgba(255, 255, 255, 0.25);
+    --button-hover-bg: rgba(70, 70, 70, 0.95);
+    --button-hover-border: rgba(255, 255, 255, 0.5);
+    --footer-text-color: #a0a0a0;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Cores específicas dos Botões */
+    --instagram-color: #dc2743;
+    --linkedin-color: #0077b5;
+    --website-color: #556270;
+    --whatsapp-color: #25d366;
+    --github-color: #24292e;
+
+    /* --- Valores Fluidos (MELHORIA) --- */
+    /* Usando clamp(MIN, PREFERIDO, MAX) para responsividade suave */
+    --fluid-padding-container-y: clamp(25px, 6vw, 45px); /* Padding vertical do container */
+    --fluid-padding-container-x: clamp(20px, 5vw, 35px); /* Padding horizontal do container */
+    --fluid-logo-size: clamp(80px, 15vw, 110px);        /* Tamanho da logo */
+    --fluid-logo-margin-bottom: clamp(15px, 4vw, 25px); /* Margem abaixo da logo */
+    --fluid-name-size: clamp(1.8em, 5vw, 2.5em);         /* Tamanho do nome */
+    --fluid-name-margin-bottom: clamp(25px, 6vw, 40px); /* Margem abaixo do nome */
+    --fluid-button-padding-y: clamp(12px, 2.5vw, 16px); /* Padding vertical do botão */
+    --fluid-button-padding-x: clamp(18px, 4vw, 25px);   /* Padding horizontal do botão */
+    --fluid-button-font-size: clamp(0.9em, 2.2vw, 1.1em); /* Tamanho da fonte do botão */
+    --fluid-button-icon-size: clamp(1.1em, 3vw, 1.3em);  /* Tamanho do ícone do botão */
+    --fluid-button-margin-bottom: clamp(15px, 3vw, 18px); /* Margem entre botões */
+    --fluid-footer-margin-top: clamp(25px, 5vw, 35px);  /* Margem acima do rodapé */
+    --fluid-footer-font-size: clamp(0.75em, 1.8vw, 0.9em);/* Tamanho da fonte do rodapé */
+}
+
+/* --- Estilos Gerais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Usando clamp para padding responsivo no body */
+    padding: clamp(15px, 4vw, 30px);
+    line-height: 1.6;
+    position: relative; /* Necessário para contexto de empilhamento */
+    overflow-x: hidden; /* Previne scroll horizontal */
+    overflow-y: auto;   /* Permite scroll vertical se necessário */
+}
+
+/* --- Fundo com Partículas --- */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Atrás de tudo */
+}
+
+/* --- Container Principal --- */
+.container {
+    background: linear-gradient(145deg, var(--container-bg-gradient-start), var(--container-bg-gradient-end));
+    /* Usando variáveis fluidas para padding */
+    padding: var(--fluid-padding-container-y) var(--fluid-padding-container-x);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.03) inset;
+    text-align: center;
+    max-width: 520px; /* Mantém uma largura máxima para legibilidade em telas grandes */
+    width: 95%;      /* Usa quase toda a largura em telas menores */
+    position: relative;
+    z-index: 1; /* Acima das partículas */
+    border: 1px solid var(--container-border-color);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: fadeInScale 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- Logo e Nome --- */
+.logo {
+    /* Usando variável fluida para tamanho */
+    max-width: var(--fluid-logo-size);
+    height: auto;
+    /* Usando variável fluida para margem */
+    margin-bottom: var(--fluid-logo-margin-bottom);
+    border-radius: 50%;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.name {
+    /* Usando variável fluida para tamanho da fonte */
+    font-size: var(--fluid-name-size);
+    font-weight: 700;
+    color: var(--text-color-light);
+    /* Usando variável fluida para margem */
+    margin-bottom: var(--fluid-name-margin-bottom);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Lista de Links --- */
+.links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.links-list li {
+    /* Usando variável fluida para margem entre itens */
+    margin-bottom: var(--fluid-button-margin-bottom);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Animação escalonada para os itens da lista */
+.links-list li:nth-child(1) { animation-delay: 0.6s; }
+.links-list li:nth-child(2) { animation-delay: 0.7s; }
+.links-list li:nth-child(3) { animation-delay: 0.8s; }
+.links-list li:nth-child(4) { animation-delay: 0.9s; }
+.links-list li:nth-child(5) { animation-delay: 1.0s; }
+/* Adicione mais se precisar */
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Botões de Link --- */
+.link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-bg-default);
+    color: var(--button-text-default);
+    /* Usando variáveis fluidas para padding */
+    padding: var(--fluid-button-padding-y) var(--fluid-button-padding-x);
+    text-decoration: none;
+    border-radius: 12px;
+    /* Usando variável fluida para tamanho da fonte */
+    font-size: var(--fluid-button-font-size);
+    font-weight: 500;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.25s ease-out, box-shadow 0.3s ease;
+    border: 1px solid var(--button-border-default);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.link-button i {
+    margin-right: 12px; /* Pode ajustar ou usar clamp se quiser */
+    /* Usando variável fluida para tamanho do ícone */
+    font-size: var(--fluid-button-icon-size);
+    width: 1.5em; /* Baseado no font-size do ícone */
+    text-align: center;
+    transition: transform 0.25s ease-out;
+    flex-shrink: 0; /* Impede que o ícone encolha */
+}
+
+.link-button:hover,
+.link-button:focus {
+    background-color: var(--button-hover-bg);
+    border-color: var(--button-hover-border);
+    color: var(--text-color-light);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.link-button:focus-visible {
+    outline: 2px solid var(--button-hover-border);
+    outline-offset: 2px;
+}
+
+.link-button:hover i,
+.link-button:focus i {
+    transform: scale(1.15);
+}
+
+/* --- Cores Específicas e Hover Glow --- */
+/* (As cores e sombras específicas foram mantidas como estavam) */
+.link-button.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border: none; color: #fff;
+    box-shadow: 0 5px 15px rgba(220, 39, 67, 0.3);
+}
+.link-button.instagram:hover, .link-button.instagram:focus {
+    box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4), 0 0 15px rgba(220, 39, 67, 0.3);
+    background-position: right center;
+}
+
+.link-button.linkedin {
+    background-color: var(--linkedin-color); border: none; color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
+.link-button.linkedin:hover, .link-button.linkedin:focus {
+    background-color: #005e90;
+    box-shadow: 0 8px 20px rgba(0, 119, 181, 0.4), 0 0 15px rgba(0, 119, 181, 0.3);
+}
+
+.link-button.website {
+    background-color: var(--website-color); border: none; color: #fff;
+    box-shadow: 0 5px 15px rgba(85, 98, 112, 0.3);
+}
+.link-button.website:hover, .link-button.website:focus {
+    background-color: #414d59;
+    box-shadow: 0 8px 20px rgba(85, 98, 112, 0.4), 0 0 15px rgba(85, 98, 112, 0.3);
+}
+
+.link-button.whatsapp {
+    background-color: var(--whatsapp-color); border: none; color: #fff;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+.link-button.whatsapp:hover, .link-button.whatsapp:focus {
+    background-color: #1ebe5a;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4), 0 0 15px rgba(37, 211, 102, 0.3);
+}
+
+.link-button.github {
+    background-color: var(--github-color);
+    border: none; color: #fff;
+    box-shadow: 0 5px 15px rgba(36, 41, 46, 0.3);
+}
+.link-button.github:hover,
+.link-button.github:focus {
+    background-color: #1b1f23;
+    box-shadow: 0 8px 20px rgba(36, 41, 46, 0.4), 0 0 15px rgba(36, 41, 46, 0.3);
+}
+
+/* --- Rodapé --- */
+.footer {
+    /* Usando variável fluida para margem */
+    margin-top: var(--fluid-footer-margin-top);
+    /* Usando variável fluida para tamanho da fonte */
+    font-size: var(--fluid-footer-font-size);
+    color: var(--footer-text-color);
+    opacity: 0.7;
+}
+
+/* --- Responsividade (Media Query Opcional / Refinamento) --- */
+/*
+   Com o uso extensivo de `clamp()`, a necessidade de media queries
+   diminui. Elas podem ser usadas para ajustes mais drásticos
+   ou para garantir que os valores mínimos/máximos do clamp()
+   sejam adequados em telas muito pequenas ou muito grandes.
+   Neste caso, com clamp(), a media query anterior pode até
+   ser removida ou simplificada, pois a fluidez já está incorporada.
+   Vamos manter uma para ajustes finos em telas pequenas, se necessário.
+*/
+@media (max-width: 400px) { /* Ajustado para telas bem pequenas */
+    .container {
+        /* Pode-se reduzir um pouco mais o border-radius se desejar */
+        border-radius: 15px;
+         width: 98%; /* Quase tocar as bordas em telas muito pequenas */
+    }
+
+     .name {
+        /* Garante que o nome não fique excessivamente grande */
+        font-size: clamp(1.6em, 5vw, 2em); /* Reduz o max do clamp para telas pequenas */
+     }
+
+    /* Opcional: Ajustar espaçamento dos ícones se necessário */
+    /* .link-button i {
+        margin-right: 8px;
+    } */
+}
